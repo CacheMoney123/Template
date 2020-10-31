@@ -6,10 +6,15 @@ function Home() {
     return (
         <div className="App">
             <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
+                <p className="title">
+                   <u>Welcome to SEASONE(tc)D</u>
                 </p>
+                <ul className="info">
+                   <li> Testing how this item would look </li>
+                   <li> And another </li>
+                   <li> And another.... </li>
+                   <li> Last one... </li>
+                </ul>
                 <a
                     className="App-link"
                     href="https://reactjs.org"
