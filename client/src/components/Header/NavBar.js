@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const NavBar = () => {
     return (
@@ -19,6 +20,7 @@ const NavBar = () => {
                 </a>
                 <a className = "nav-link" target="_blank" rel="noopener noreferrer" href="https://reactjs.org/tutorial/tutorial.html">React Tutorial</a>
                 <a className = "nav-link" target="_blank" rel="noopener norefferer" href="https://nodejs.org/en/docs/">Node Docs</a>
+                <Link className = "user-login" to='/users'> Login </Link>
             </div>
 
         </div>

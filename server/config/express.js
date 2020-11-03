@@ -13,6 +13,12 @@ module.exports.init = () => {
     mongoose.connect(process.env.DB_URI || require('./config').db.uri, {
         useNewUrlParser: true
     });
+
+    const connection = mongoose.connection;
+    connection.once('open', () => {
+        console.log("MongoDB connection successful!")
+    })
+
     mongoose.set('useCreateIndex', true);
     mongoose.set('useFindAndModify', false);
 
