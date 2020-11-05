@@ -13,7 +13,7 @@ export default class recipeSearch extends Component {
 
   onSearchClick(){
 console.log("OOOO IMA CLICKING");
-
+console.log(searchText);
   }
 
   onEnter(){
