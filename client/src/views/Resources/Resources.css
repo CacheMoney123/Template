@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+}
+
+.Resources {
+    text-align: center;
+    background: #ffdc9b;
+}
+
+.Resources-logo {
+    height: 40vmin;
+}
+
+.Resources-header {
+    background-image: url("plant.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 85%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    font-family: "Lucida Console", Courier, monospace;
+    color: black;
+
+}
+
+.Resources-link {
+    color: #09d3ac;
+}
+
+.Resources-title {
+    position: absolute;
+    top: 12%;
+    font-size: 50px;
+    color: black; 
+}
+
+.Resources-info {
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    font-size: 20px;
+    color: black; 
+    list-style-type: circle;
+}
