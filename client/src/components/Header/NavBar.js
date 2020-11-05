@@ -18,7 +18,15 @@ const NavBar = () => {
                     React Docs
                 </a>
                 <a className = "nav-link" target="_blank" rel="noopener noreferrer" href="https://reactjs.org/tutorial/tutorial.html">React Tutorial</a>
+<<<<<<< Updated upstream
                 <a className = "nav-link" target="_blank" rel="noopener norefferer" href="https://nodejs.org/en/docs/">Node Docs</a>
+=======
+                <a className = "nav-link" target="_blank" rel="noopener norefferer" href="https://nodejs.org/en/docs/">Node Docs
+                <Link className = "nav-link" to='/recipes'> Recipes </Link>
+                </a>
+                <Link className = "user-login" to='/users'> Login </Link>
+                
+>>>>>>> Stashed changes
             </div>
 
         </div>
