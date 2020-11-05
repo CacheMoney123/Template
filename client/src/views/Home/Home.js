@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../../assets/logo.svg';
 import './Home.css';
+import { Link } from 'react-router-dom';
 
 function Home() {
     return (
@@ -15,6 +16,10 @@ function Home() {
                    <li> And another.... </li>
                    <li> Last one... </li>
                 </ul>
+                <div className="get-started"> 
+                <Link className = "get-started" to='/users'> GET STARTED </Link>
+                 </div>
+                 <div className="triangle-right"> </div>
                 <a
                     className="App-link"
                     href="https://reactjs.org"

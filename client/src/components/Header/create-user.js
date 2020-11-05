@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import "./create-user.css";
 
 export default class CreateUser extends Component {
   constructor(props) {
@@ -39,7 +38,8 @@ export default class CreateUser extends Component {
     console.log(user);
 
     axios.post('http://localhost:5000/users/add', user)
-      .then(res => console.log(res.data));
+      .then(res => console.log(res))
+      .catch( err => console.log("An error occurred.") );
 
     this.setState({
       username: '',
@@ -51,7 +51,7 @@ export default class CreateUser extends Component {
     return (
       <div className="App2">
           <header className = "bgstuff"> 
-        <h3>Create New User</h3>
+        <h3>Create An Account</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group"> 
             <label>Username: </label>

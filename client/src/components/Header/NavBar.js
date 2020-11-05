@@ -8,19 +8,19 @@ const NavBar = () => {
         <div className = "header">
             {/* Logo */}
             <Link className = "nav-title" to="/">
-                <img className = "nav-logo" src={ "/seasoned.png" } alt="React logo" />
+                <img className = "nav-logo" src={ "/seasoned.png" } alt="Seasoned logo" />
             </Link>
 
             {/* Page Links */}
             <div className = "nav-items">
                 <Link className = "nav-link" to='/Home'>Home</Link>
-                <Link className = "nav-link" to='/Register'>Extra Page</Link>
+                <Link className = "nav-link" to='/Register'>Recipes</Link>
                 <a className = "nav-link" target='_blank' rel="noopener noreferrer" href="https://reactjs.org/docs/getting-started.html">
-                    React Docs
+                    Food Drives
                 </a>
-                <a className = "nav-link" target="_blank" rel="noopener noreferrer" href="https://reactjs.org/tutorial/tutorial.html">React Tutorial</a>
-                <a className = "nav-link" target="_blank" rel="noopener norefferer" href="https://nodejs.org/en/docs/">Node Docs</a>
-                <Link className = "user-login" to='/users'> Login </Link>
+                <a className = "nav-link" target="_blank" rel="noopener noreferrer" href="https://reactjs.org/tutorial/tutorial.html"> COVID-19 </a>
+                <a className = "nav-link" target="_blank" rel="noopener norefferer" href="https://nodejs.org/en/docs/">More</a>
+                <Link className = "user-login" to='/users'> Login | Create Account </Link>
             </div>
 
         </div>
