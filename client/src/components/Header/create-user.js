@@ -28,8 +28,25 @@ export default class CreateUser extends Component {
     })
   }
 
+<<<<<<< Updated upstream
   onSubmit(e) {
+=======
+  onChangeEmail(e) {
+    this.setState({
+      email: e.target.value
+    })
+  }
+
+  onChangeName(e) {
+    this.setState({
+      name: e.target.value
+    })
+  }
+
+  async onSubmit(e) {
+>>>>>>> Stashed changes
     e.preventDefault();
+    const {history} = this.props;
 
     const user = {
       username: this.state.username,
@@ -38,13 +55,27 @@ export default class CreateUser extends Component {
 
     console.log(user);
 
+<<<<<<< Updated upstream
     axios.post('http://localhost:5000/users/add', user)
       .then(res => console.log(res.data));
+=======
+
+
+    await axios.post('http://localhost:5000/users/add', user)
+      .then(res => console.log(res),
+      this.state.created = true
+      )
+      .catch( err => console.log("An error occurred.") );
+>>>>>>> Stashed changes
 
     this.setState({
       username: '',
       password: ''
     })
+
+    // await history.push('/landing');
+
+
   }
 
   render() {
