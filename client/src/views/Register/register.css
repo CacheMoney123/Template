@@ -15,7 +15,7 @@
 
 }
 
-.login-picture {
+.register-picture {
     height: 600px;
     width: 600px;
     align-items: left;
@@ -36,7 +36,7 @@
 }
 
 .landing {
-    position:absolute;
+    position: fixed;
     bottom: 15px;
     right: 35px;
     color: black;
@@ -58,8 +58,8 @@
     color: black;
 }
 
-.login-button {
-    position:absolute;
+.register-button {
+    position: fixed;
     bottom: 250px;
     transform: rotate(90deg);
     right: 122px;
@@ -75,7 +75,7 @@
     opacity: 50%;
 }
 
-.login-button:hover {
+.register-button:hover {
     opacity: 85%;
     text-decoration: none;
     color: black;

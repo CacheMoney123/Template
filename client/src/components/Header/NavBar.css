@@ -1,5 +1,5 @@
 .header {
-    background: url("nav.jpg");
+    background: url("nav.png");
     background-size: cover;
     border-bottom: 5px solid #808080;
     display: flex;
@@ -8,13 +8,15 @@
     padding: 1%;
 }
 
-.nav-logo {
-    display: flex;
-    height: 99px;
-    width: 200px;
-    padding: -10%;
-    margin-left: 15%;
+.header::before {
     
+}
+
+.nav-logo {
+    height: 99px;
+    width: 170px;
+    margin-left: 15%;
+    align-items: left;
 }
 
 .nav-logo:hover {
@@ -27,6 +29,7 @@
     margin-left: auto;
     margin-right: 5%;
     align-items: center;
+    opacity: 100%;
 }
 
 .nav-link {
@@ -37,6 +40,7 @@
     text-decoration: none;
     border: none;
     border-radius: 12px;
+    opacity: 100%;
 }
 
 .nav-link:hover {

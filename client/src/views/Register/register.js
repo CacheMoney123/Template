@@ -1,20 +1,20 @@
 import React from 'react';
-import './style.css';
+import './register.css';
 import { Link } from 'react-router-dom';
 import { BrowserRouter as Router, Route} from "react-router-dom";
-import CreateUser from "./../../components/Header/create-user";
-import logo from "./loginPic.svg"
+import LoginUser from "./../../components/Header/login-user";
+import logo from "./registerPic.svg"
 
 function Login() {
   
     return (
         <div className="total" >
-          <img src={logo} className="login-picture" alt="logo" />
+          <img src={logo} className="register-picture" alt="logo" />
          
         <div className="container-md"><Router>
-        <Route path="/users" exact component={CreateUser} />
+        <Route path="/login" exact component={LoginUser} />
         </Router>
-        <Link className = "login-button" to='/login'>Login</Link>
+        <Link className = "register-button" to='/users'>Register</Link>
         <Link className = "landing" to='/landing'>Register later</Link>
         </div>
 

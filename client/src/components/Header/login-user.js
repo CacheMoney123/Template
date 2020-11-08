@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Message, Form } from "semantic-ui-react";
+import { Redirect } from 'react-router-dom';
 
-export default class CreateUser extends Component {
+
+export default class LoginUser extends Component {
   constructor(props) {
     super(props);
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
-    this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangeName = this.onChangeName.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       username: '',
       password: '',
-      name: '',
-      email: '',
-      created: false,
+      loggedIn: false,
     }
   }
 
@@ -33,69 +31,38 @@ export default class CreateUser extends Component {
     })
   }
 
-  onChangeEmail(e) {
-    this.setState({
-      email: e.target.value
-    })
-  }
-
-  onChangeName(e) {
-    this.setState({
-      name: e.target.value
-    })
-  }
-
   onSubmit(e) {
     e.preventDefault();
 
     const user = {
       username: this.state.username,
-      password: this.state.password,
-      email: this.state.email,
-      name: this.state.name,
+      password: this.state.password
     }
 
     console.log(user);
 
-    axios.post('http://localhost:5000/users/add', user)
+    axios.get('http://localhost:5000/users', user)
       .then(res => console.log(res),
-      this.state.created = true
-      )
+      this.state.loggedIn = true )
       .catch( err => console.log("An error occurred.") );
 
     this.setState({
       username: '',
-      password: '',
-      email: '',
-      name: '',
+      password: ''
     })
+    
   }
 
   render() {
-    
+      
+   if(this.state.loggedIn === true)
+    this.props.history.push('/landing');
+  
     return (
-      <div className="App2">
-          <header className = "bgstuff"> 
-        <h3>Create An Account</h3>
+      <div className="Login">
+        <header className = "bgstuff"> 
+        <h3>Login to Account</h3>
         <form onSubmit={this.onSubmit}>
-        <div className="form-group"> 
-            <label>Email: </label>
-            <input type="text"
-                required
-                className="form-control"
-                value={this.state.email}
-                onChange={this.onChangeEmail}
-                />
-          </div>
-          <div className="form-group"> 
-            <label>Name: </label>
-            <input  type="text"
-                required
-                className="form-control"
-                value={this.state.name}
-                onChange={this.onChangeName}
-                />
-          </div>
           <div className="form-group"> 
             <label>Username: </label>
             <input  type="text"
@@ -115,11 +82,16 @@ export default class CreateUser extends Component {
                 />
           </div>
           <div className="form-group">
-            <input type="submit" value="Create User" className="btn btn-primary" />
+            <input type="submit" value="Login" className="btn btn-primary" />
           </div>
         </form>
+
         </header>
+       
       </div>
+
+        
+
     )
   }
 }
