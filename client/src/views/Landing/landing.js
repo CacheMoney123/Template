@@ -2,14 +2,22 @@ import React from 'react';
 import './landing.css';
 import { Link } from 'react-router-dom';
 import { BrowserRouter as Router, Route} from "react-router-dom";
-import NavBar from "../../components/Header/NavBar"
+import NavBar from "../../components/Header/NavBar";
+import logo from "./landingPic.jpg"
 
 function Landing() {
     return (
         <div className="whoa" >
          <NavBar />
          <div className="base">
-       <p className="t"> This is the landing page. </p>
+       <img src={logo} className="land-picture" alt="logo" />
+       <p className="body-par"> Seasoned is all about affordable meal planning and
+       getting out of the house. Catered with you in mind, Seasosned allows you to find
+       recipes based on what you have in your pantry - nothing more! 
+       <br/><br/>In addition, Seasoned allows you to find food drives near you so that
+       you can expand your pantry inventory at no expense of your own.
+       <br/><br/> We take pride is helping you find the best resources possible, whether
+       it's for COVID-19 or for simple recipe ideas. Go on and take a look!</p>
         </div>
         </div>
 

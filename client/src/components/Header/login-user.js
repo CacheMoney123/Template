@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Message, Form } from "semantic-ui-react";
 import { Redirect } from 'react-router-dom';
 
-
 export default class LoginUser extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +15,7 @@ export default class LoginUser extends Component {
       username: '',
       password: '',
       loggedIn: false,
+      found: '',
     }
   }
 
@@ -41,10 +41,27 @@ export default class LoginUser extends Component {
 
     console.log(user);
 
-    axios.get('http://localhost:5000/users', user)
-      .then(res => console.log(res),
-      this.state.loggedIn = true )
-      .catch( err => console.log("An error occurred.") );
+    axios.get('http://localhost:5000/users/', user)
+      .then( (res) => {
+        console.log(res)
+        if(res.username===user.username && res.password!=null) {
+        this.setState({
+          found: "Account found! Redirecting...",
+          loggedIn: true,
+        }) }
+        else
+          {  this.setState({
+            found: "Account not found! Try again",
+          }) }
+      }
+      )
+      .catch( err => {
+        this.setState({
+          found: "That account cannot be found",
+          loggedIn: false,
+        })
+        console.log(this.state.found)
+      } );
 
     this.setState({
       username: '',
@@ -53,10 +70,9 @@ export default class LoginUser extends Component {
     
   }
 
+  
   render() {
-      
-   if(this.state.loggedIn === true)
-    this.props.history.push('/landing');
+  
   
     return (
       <div className="Login">
@@ -83,6 +99,7 @@ export default class LoginUser extends Component {
           </div>
           <div className="form-group">
             <input type="submit" value="Login" className="btn btn-primary" />
+          <p className="notif"> {this.state.found} </p>
           </div>
         </form>
 
