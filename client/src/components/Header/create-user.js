@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Message, Form } from "semantic-ui-react";
 import './create-user.css'
 
 export default class CreateUser extends Component {
@@ -58,7 +57,7 @@ export default class CreateUser extends Component {
 
     console.log(user);
 
-    axios.post('http://localhost:5000/users/add', user)
+    axios.post('http://localhost:5000/login', user)
       .then(res => console.log(res),
       this.setState({
         created: "Account successfully created! Try to login."
@@ -124,8 +123,8 @@ export default class CreateUser extends Component {
           </div>
           <div className="form-group">
             <input type="submit" value="Create User" className="btn btn-primary" />
-            <p className="notif"> {this.state.created} </p>
           </div>
+          <p className="notif"> {this.state.created} </p>
         </form>
         </header>
       </div>

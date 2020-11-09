@@ -8,8 +8,7 @@ function NotFound()  {
         return (
               <body>
               <div className="just">
-              <img src={logo} className="error-picture" alt="logo" />
-                  
+              <img src={logo} className="error-picture" alt="logo" />           
                      <Link className = "back-home" to='/landing'> Go back home </Link>
               </div>  
               </body>

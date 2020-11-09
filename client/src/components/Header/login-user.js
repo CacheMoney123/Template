@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Message, Form } from "semantic-ui-react";
 import { Redirect } from 'react-router-dom';
 
 export default class LoginUser extends Component {
@@ -44,7 +43,7 @@ export default class LoginUser extends Component {
     axios.get('http://localhost:5000/users/', user)
       .then( (res) => {
         console.log(res)
-        if(res.username===user.username && res.password!=null) {
+        if(res!=null) {
         this.setState({
           found: "Account found! Redirecting...",
           loggedIn: true,
@@ -72,7 +71,6 @@ export default class LoginUser extends Component {
 
   
   render() {
-  
   
     return (
       <div className="Login">
