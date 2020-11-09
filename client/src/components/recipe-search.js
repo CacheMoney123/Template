@@ -23,8 +23,8 @@ export default class recipeSearch extends Component {
     async onKeyPress(e){
       if(e.key === "Enter"){
           this.srchChange(e);
-        console.log("OOOO IMA ENTERING");
-        console.log(this.state.search);
+        //console.log("OOOO IMA ENTERING");
+        //console.log(this.state.search);
         //this.state.search now contains the value of the search after the user enters
         
 
@@ -32,8 +32,8 @@ export default class recipeSearch extends Component {
 
          const init = async() => {
             const data = await getData(this.state.search);
-            console.log("data recieved");
-            console.log(data);
+            //console.log("data recieved");
+           // console.log(data);
          };
 
          await init();
