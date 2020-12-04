@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const NavBar = () => {
+    const [search , setSearch] = useState('')
     return (
         <div className = "header">
             {/* Logo */}
@@ -12,6 +13,16 @@ const NavBar = () => {
             </Link>
 
             {/* Page Links */}
+            <div className="username-search">
+                <form className="form-inline">
+                    <div className="input-group">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <input type="text" className="form-control mr-sm-2" placeholder="Search Users" value={search} onSubmit={(event => fetchUsers(event.target.value))} aria-label="Search Users"
+                               aria-describedby="basic-addon1"/>
+                    </div>
+                </form> </div>
             <div className = "nav-items">
 <<<<<<< Updated upstream
                 <Link className = "nav-link" to='/Home'>Home</Link>
@@ -35,5 +46,22 @@ const NavBar = () => {
         </div>
     )
 };
+
+const fetchUsers = (query) => {
+    //setSearch(query)
+    fetch('/searchUser',{
+        method: "post",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({
+            query
+        })
+    }).then(res => res.json())
+        .then(results => {
+            console.log(results)
+        })
+
+}
 
 export default NavBar;
