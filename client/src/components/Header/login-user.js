@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Message, Form } from "semantic-ui-react";
 import { Redirect } from 'react-router-dom';
-
 
 export default class LoginUser extends Component {
   constructor(props) {
@@ -16,6 +14,7 @@ export default class LoginUser extends Component {
       username: '',
       password: '',
       loggedIn: false,
+      found: '',
     }
   }
 
@@ -41,10 +40,27 @@ export default class LoginUser extends Component {
 
     console.log(user);
 
-    axios.get('http://localhost:5000/users', user)
-      .then(res => console.log(res),
-      this.state.loggedIn = true )
-      .catch( err => console.log("An error occurred.") );
+    axios.get('http://localhost:5000/users/', user)
+      .then( (res) => {
+        console.log(res)
+        if(res!=null) {
+        this.setState({
+          found: "Account found! Redirecting...",
+          loggedIn: true,
+        }) }
+        else
+          {  this.setState({
+            found: "Account not found! Try again",
+          }) }
+      }
+      )
+      .catch( err => {
+        this.setState({
+          found: "That account cannot be found",
+          loggedIn: false,
+        })
+        console.log(this.state.found)
+      } );
 
     this.setState({
       username: '',
@@ -53,48 +69,44 @@ export default class LoginUser extends Component {
     
   }
 
+  
   render() {
-      
-    if(this.state.loggedIn === true) {
-      this.props.history.push('/landing');
-      this.forceUpdate();
-    }
-
-
-      return (
-          <div className="Login">
-            <header className="bgstuff">
-              <h3>Login to Account</h3>
-              <form onSubmit={this.onSubmit}>
-                <div className="form-group">
-                  <label>Username:</label>
-                  <input type="text"
-                         required
-                         className="form-control"
-                         value={this.state.username}
-                         onChange={this.onChangeUsername}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Password:</label>
-                  <input type="password"
-                         required
-                         className="form-control"
-                         value={this.state.password}
-                         onChange={this.onChangePassword}
-                  />
-                </div>
-                <div className="form-group">
-                  <input type="submit" value="Login" className="btn btn-primary"/>
-                </div>
-              </form>
-
-            </header>
-
+  
+    return (
+      <div className="Login">
+        <header className = "bgstuff"> 
+        <h3>Login to Account</h3>
+        <form onSubmit={this.onSubmit}>
+          <div className="form-group"> 
+            <label>Username: </label>
+            <input  type="text"
+                required
+                className="form-control"
+                value={this.state.username}
+                onChange={this.onChangeUsername}
+                />
           </div>
+          <div className="form-group"> 
+            <label>Password: </label>
+            <input  type="password"
+                required
+                className="form-control"
+                value={this.state.password}
+                onChange={this.onChangePassword}
+                />
+          </div>
+          <div className="form-group">
+            <input type="submit" value="Login" className="btn btn-primary" />
+          <p className="notif"> {this.state.found} </p>
+          </div>
+        </form>
 
+        </header>
+       
+      </div>
 
-      )
+        
 
+    )
   }
 }

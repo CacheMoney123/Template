@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import "./create-user.css";
+import './create-user.css'
 
 export default class CreateUser extends Component {
   constructor(props) {
@@ -8,11 +8,16 @@ export default class CreateUser extends Component {
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
+    this.onChangeEmail = this.onChangeEmail.bind(this);
+    this.onChangeName = this.onChangeName.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      name: '',
+      email: '',
+      created: '',
     }
   }
 
@@ -28,9 +33,6 @@ export default class CreateUser extends Component {
     })
   }
 
-<<<<<<< Updated upstream
-  onSubmit(e) {
-=======
   onChangeEmail(e) {
     this.setState({
       email: e.target.value
@@ -43,47 +45,64 @@ export default class CreateUser extends Component {
     })
   }
 
-  async onSubmit(e) {
->>>>>>> Stashed changes
+  onSubmit(e) {
     e.preventDefault();
-    const {history} = this.props;
 
     const user = {
       username: this.state.username,
-      password: this.state.password
+      password: this.state.password,
+      email: this.state.email,
+      name: this.state.name,
     }
 
     console.log(user);
 
-<<<<<<< Updated upstream
-    axios.post('http://localhost:5000/users/add', user)
-      .then(res => console.log(res.data));
-=======
-
-
-    await axios.post('http://localhost:5000/users/add', user)
+    axios.post('http://localhost:5000/login', user)
       .then(res => console.log(res),
-      this.state.created = true
+      this.setState({
+        created: "Account successfully created! Try to login."
+      })
       )
-      .catch( err => console.log("An error occurred.") );
->>>>>>> Stashed changes
+      .catch( err => {
+        this.setState({
+          created: "An error occurred, try again!"
+        })
+      } );
 
     this.setState({
       username: '',
-      password: ''
+      password: '',
+      email: '',
+      name: '',
     })
-
-    // await history.push('/landing');
-
-
   }
 
+
   render() {
+    
     return (
       <div className="App2">
           <header className = "bgstuff"> 
-        <h3>Create New User</h3>
+        <h3>Create An Account</h3>
         <form onSubmit={this.onSubmit}>
+        <div className="form-group"> 
+            <label>Email: </label>
+            <input type="text"
+                required
+                className="form-control"
+                value={this.state.email}
+                onChange={this.onChangeEmail}
+                />
+          </div>
+          <div className="form-group"> 
+            <label>Name: </label>
+            <input  type="text"
+                required
+                className="form-control"
+                value={this.state.name}
+                onChange={this.onChangeName}
+                />
+          </div>
           <div className="form-group"> 
             <label>Username: </label>
             <input  type="text"
@@ -95,7 +114,7 @@ export default class CreateUser extends Component {
           </div>
           <div className="form-group"> 
             <label>Password: </label>
-            <input  type="text"
+            <input  type="password"
                 required
                 className="form-control"
                 value={this.state.password}
@@ -105,6 +124,7 @@ export default class CreateUser extends Component {
           <div className="form-group">
             <input type="submit" value="Create User" className="btn btn-primary" />
           </div>
+          <p className="notif"> {this.state.created} </p>
         </form>
         </header>
       </div>

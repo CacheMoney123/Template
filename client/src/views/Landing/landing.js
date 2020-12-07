@@ -3,7 +3,6 @@ import './landing.css';
 import NavBar from "../../components/Header/NavBar";
 import logo from "./landingPic.jpg"
 
-
 function Landing() {
     return (
         <div className="whoa" >
@@ -17,9 +16,7 @@ function Landing() {
        you can expand your pantry inventory at no expense of your own.
        <br/><br/> We take pride is helping you find the best resources possible, whether
        it's for COVID-19 or for simple recipe ideas. Go on and take a look!</p>
-             <button type="button" role="button" className="btn btn-success btn-circle " onClick="location.href = 'www.yoursite.com';">+</button>
-
-         </div>
+        </div>
         </div>
 
     );

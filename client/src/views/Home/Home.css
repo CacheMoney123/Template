@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=EB+Garamond&family=Kufam&family=Rock+Salt&display=swap');
+
 body {
     margin: 0;
 }
@@ -20,23 +22,46 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
-    font-family: "Lucida Console", Courier, monospace;
     color: black;
 
 }
+
 
 .App-link {
     color: #09d3ac;
 }
 
 .title {
-    font-size: 50px;
-    color: black; 
+    top: 400px;
+    font-size: 40px;
+    color: #5d5b56; 
+    font-family: 'Rock Salt', cursive;
 }
 
 .info {
-    font-size: 20px;
-    color: black; 
+    font-size: 15px;
+    color: #5d5b56; 
     list-style-type: circle;
+    font-family: 'Kufam', cursive;
+}
+
+.get-started {
+    color: black;
+    text-decoration: none;
+    background-color: #59bb30;
+    margin-top: 10px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    font-size: 30px;
+    border-radius: 8px;
+    opacity: 100%;
+    font-family: 'Kufam', cursive;
+}
+
+.get-started:hover {
+    background-color: white;
+    color: #59bb30;
+    text-decoration: none;
 }

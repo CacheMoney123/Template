@@ -3,31 +3,28 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const recipeSchema = new Schema({
-    creator: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true,
-        minlength: 3
-    },
-    name: {
+    recipeName: {
         type: String,
         required: true,
         unique: false,
         trim: true,
         minlength: 3
     },
-    description: {
+    recipeDescription: {
         type: String,
         required: true,
-        minlength: 3
+        minlength: 10
     },
-    instructions: {
-        type: [String],
+    timeToPrepareMins: {
+        type: Number,
+        required: true
+    },
+    recipeCreatorID: {
+        type: String,
         required: true,
         unique: true,
     },
-    ingredients: {
+    recipeIngredients: {
         type: [String],
         required: true,
         unique: false,
@@ -36,6 +33,6 @@ const recipeSchema = new Schema({
     timestamps: true,
 } )
 
-const Recipe = mongoose.model('Recipe', userSchema);
+const recipe = mongoose.model('Recipe', recipeSchema);
 
-module.exports = Recipe;
+module.exports = recipe;
