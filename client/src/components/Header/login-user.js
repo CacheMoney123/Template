@@ -1,112 +1,54 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import React, {useState,useContext} from 'react';
+import AuthService from '../../services/authservice';
+import Message from '../message';
+import {AuthContext} from '../../context/authcontext';
 
-export default class LoginUser extends Component {
-  constructor(props) {
-    super(props);
+const Login = props=>{
+    const [user,setUser] = useState({username: "", password : ""});
+    const [message,setMessage] = useState(null);
+    const authContext = useContext(AuthContext);
 
-    this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-
-    this.state = {
-      username: '',
-      password: '',
-      loggedIn: false,
-      found: '',
-    }
-  }
-
-  onChangeUsername(e) {
-    this.setState({
-      username: e.target.value
-    })
-  }
-
-  onChangePassword(e) {
-    this.setState({
-      password: e.target.value
-    })
-  }
-
-  onSubmit(e) {
-    e.preventDefault();
-
-    const user = {
-      username: this.state.username,
-      password: this.state.password
+    const onChange = e =>{
+        setUser({...user,[e.target.name] : e.target.value});
     }
 
-    console.log(user);
+    const onSubmit = e =>{
+        e.preventDefault();
+        AuthService.login(user).then(data=>{
+            console.log(data);
+            const { isAuthenticated,user,message} = data;
+            if(isAuthenticated){
+                authContext.setUser(user);
+                authContext.setIsAuthenticated(isAuthenticated);
+                props.history.push('/landing');
+            }
+            else
+                setMessage(message);
+        });
+    }
 
-    axios.get('http://localhost:5000/users/', user)
-      .then( (res) => {
-        console.log(res)
-        if(res!=null) {
-        this.setState({
-          found: "Account found! Redirecting...",
-          loggedIn: true,
-        }) }
-        else
-          {  this.setState({
-            found: "Account not found! Try again",
-          }) }
-      }
-      )
-      .catch( err => {
-        this.setState({
-          found: "That account cannot be found",
-          loggedIn: false,
-        })
-        console.log(this.state.found)
-      } );
-
-    this.setState({
-      username: '',
-      password: ''
-    })
-    
-  }
-
-  
-  render() {
-  
-    return (
-      <div className="Login">
-        <header className = "bgstuff"> 
-        <h3>Login to Account</h3>
-        <form onSubmit={this.onSubmit}>
-          <div className="form-group"> 
-            <label>Username: </label>
-            <input  type="text"
-                required
-                className="form-control"
-                value={this.state.username}
-                onChange={this.onChangeUsername}
-                />
-          </div>
-          <div className="form-group"> 
-            <label>Password: </label>
-            <input  type="password"
-                required
-                className="form-control"
-                value={this.state.password}
-                onChange={this.onChangePassword}
-                />
-          </div>
-          <div className="form-group">
-            <input type="submit" value="Login" className="btn btn-primary" />
-          <p className="notif"> {this.state.found} </p>
-          </div>
-        </form>
-
-        </header>
-       
-      </div>
-
-        
-
+    return(
+        <div>
+            <form onSubmit={onSubmit}>
+                <h3>Please sign in</h3>
+                <label htmlFor="username" className="sr-only">Username: </label>
+                <input type="text" 
+                       name="username" 
+                       onChange={onChange} 
+                       className="form-control" 
+                       placeholder="Enter Username"/>
+                <label htmlFor="password" className="sr-only">Password: </label>
+                <input type="password" 
+                       name="password" 
+                       onChange={onChange} 
+                       className="form-control" 
+                       placeholder="Enter Password"/>
+                <button className="btn btn-lg btn-primary btn-block" 
+                        type="submit">Log in </button>
+            </form>
+            {message ? <Message message={message}/> : null}
+        </div>
     )
-  }
 }
+
+export default Login;

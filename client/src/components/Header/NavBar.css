@@ -46,7 +46,7 @@
 
 .user-login {
     position:absolute;
-    top:6px;
+    top: 3px;
     right: 35px;
     color: black;
     text-align: right;
@@ -58,10 +58,54 @@
     text-decoration: none;
     border: none;
     border-radius: 8px;
-    opacity: 50%;
+    opacity: 70%;
 }
 
 .user-login:hover {
+    color:black;
+    background: #A9A9A9;
+}
+
+.user-profile {
+    position:absolute;
+    width: 120px;
+    top: 3px;
+    right: 125px;
+    color: black;
+    text-align: right;
+    text-decoration: none;
+    background-color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    opacity: 70%;
+}
+
+.user-profile:hover {
+    color:black;
+    background: #A9A9A9;
+}
+
+.user-loginO {
+    position: absolute;
+    width: 200px;
+    top: 3px;
+    right: 35px;
+    color: black;
+    text-align: right;
+    text-decoration: none;
+    background-color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    opacity: 70%;
+}
+
+.user-loginO:hover {
     color:black;
     background: #A9A9A9;
 }

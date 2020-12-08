@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Route, Switch, Redirect  } from 'react-router-dom';
+import {AuthContext} from './context/authcontext';
 
 
 import Home from "./views/Home/Home";
@@ -16,6 +17,8 @@ import "./App.css"
 
 
 const App = () => {
+  const { user, setUser, isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
+  
   return (
     <div>
       <Switch>
