@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from '../../assets/logo.svg';
 import './Home.css';
+import { Link } from 'react-router-dom';
 
 function Home() {
     return (
@@ -8,20 +8,14 @@ function Home() {
             <header className="App-header">
                 <p className="title">
                    <u>Welcome to SEASONE(tc)D</u>
-                </p>
-                <ul className="info">
-                   <li> Testing how this item would look </li>
-                   <li> And another </li>
-                   <li> And another.... </li>
-                   <li> Last one... </li>
-                </ul>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                </a>
+                </p>  <p className="info">With Seasoned, you can:
+                <ul> <li> Find meal ideas based on what you have available</li> 
+                <li> Access COVID-19 resources </li>
+                <li> Find food drives and testing locations near you</li></ul></p>
+                <div className="get-started"> 
+                <Link className = "get-started" to='/users'> GET STARTED </Link>
+                 </div>
+                
             </header>
         </div>
     );

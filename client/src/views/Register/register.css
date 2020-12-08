@@ -1,0 +1,82 @@
+.total {
+    /*background-image: url("../Home/bgimg.jpg");*/
+    background-repeat: no-repeat;
+    background-color: #DED8D2;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    clear: both;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    font-size: calc(10px + 2vmin);
+    font-family: "Lucida Console", Courier, monospace;
+    color: black;
+
+}
+
+.register-picture {
+    height: 600px;
+    width: 600px;
+    align-items: left;
+    margin-right: 120px;
+    float: left; 
+}
+
+.container-md {
+    margin-right:100px;
+    float: left;
+    border: solid #59bb30;
+    padding-right: 35px;
+    padding-left: 37px;
+    padding-top: 37px;
+    padding-bottom: 37px;
+    
+    border-radius: 10px;
+}
+
+.landing {
+    position: fixed;
+    bottom: 15px;
+    right: 35px;
+    color: black;
+    text-align: right;
+    text-decoration: none;
+
+    background-color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    opacity: 50%;
+}
+
+.landing:hover {
+    opacity: 75%;
+    text-decoration: none;
+    color: black;
+}
+
+.register-button {
+    position: fixed;
+    bottom: 250px;
+    transform: rotate(90deg);
+    right: 120px;
+    color: black;
+    text-align: right;
+    text-decoration: none;
+    background-color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    border: solid #59bb30;
+    border-radius: 3px;
+    opacity: 50%;
+}
+
+.register-button:hover {
+    opacity: 85%;
+    text-decoration: none;
+    color: black;
+}

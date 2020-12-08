@@ -3,6 +3,7 @@ const path = require('path'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
+    cors = require('cors'),
     exampleRouter = require('../routes/examples.server.routes');
 
 module.exports.init = () => {
@@ -13,11 +14,19 @@ module.exports.init = () => {
     mongoose.connect(process.env.DB_URI || require('./config').db.uri, {
         useNewUrlParser: true
     });
+
+    const connection = mongoose.connection;
+    connection.once('open', () => {
+        console.log("MongoDB connection successful!")
+    })
+
     mongoose.set('useCreateIndex', true);
     mongoose.set('useFindAndModify', false);
 
     // initialize app
     const app = express();
+
+    app.use(cors());
 
     // enable request logging for development debugging
     app.use(morgan('dev'));
