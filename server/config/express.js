@@ -4,6 +4,7 @@ const path = require('path'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     cors = require('cors'),
+    cookieParser = require('cookie-parser')
     exampleRouter = require('../routes/examples.server.routes');
 
 module.exports.init = () => {
@@ -12,6 +13,7 @@ module.exports.init = () => {
         - reference README for db uri
     */
     mongoose.connect(process.env.DB_URI || require('./config').db.uri, {
+        useUnifiedTopology: true,
         useNewUrlParser: true
     });
 
@@ -27,6 +29,8 @@ module.exports.init = () => {
     const app = express();
 
     app.use(cors());
+
+    app.use(cookieParser());
 
     // enable request logging for development debugging
     app.use(morgan('dev'));

@@ -15,7 +15,7 @@ function Login() {
         <Route path="/login" exact component={LoginUser} />
         </Router>
         <Link className = "register-button" to='/users'>Register</Link>
-        <Link className = "landing" to='/landing'>Register later</Link>
+        <Link className = "landing" to='/landing'>Login later</Link>
         </div>
 
 
