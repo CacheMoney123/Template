@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=EB+Garamond&family=Kufam&family=Rock+Salt&display=swap');
+
+.base {
+    background-image: url("woodbg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    color: black;
+    opacity: 100%;
+    justify-content: center;
+    align-content: center;
+    background-color: white;
+}
+
+.btn-success {
+    border-radius: .75rem;
+    justify-content: center;
+    align-content: center;
+}
+
+.input-group {
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+
+}
+
+.container-md {
+    justify-content: center;
+    align-content: center;
+}
+
+.form-control {
+    border-radius: .75rem;
+}
+
+.input-group-append {
+    justify-content: center;
+    align-content: center;
+    margin-top: 5px;
+}
+
+
+
+
