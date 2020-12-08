@@ -13,6 +13,8 @@ import Recipes from "./views/Recipes/recipes"
 import FoodDrives from "./views/FoodDrives/fooddrives"
 import COVID from "./views/COVID/covid"
 import More from "./views/More/more"
+import createRecipe from "./views/CreateRecipe/createRecipe";
+import Account from "./views/Account/account"
 import "./App.css"
 
 
@@ -34,6 +36,8 @@ const App = () => {
         <Route exact path="/drives" exact component= {FoodDrives} />
         <Route exact path="/covid19" exact component= {COVID} />
         <Route exact path="/more" exact component= {More} />
+        <Route exact path="/createRecipe" exact component={createRecipe} />
+        <Route exact path="/account" exact component={Account} />
       
         <Route component={NotFound}/>
       </Switch>
