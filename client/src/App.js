@@ -15,6 +15,7 @@ import More from "./views/More/more"
 import Account from "./views/Account/account"
 import "./App.css"
 import createRecipe from "./views/CreateRecipe/createRecipe";
+import Map from "./views/Map/Map"
 
 
 const App = () => {
@@ -30,7 +31,7 @@ const App = () => {
         <Route exact path="/login" exact component= {Register} />
         <Route exact path="/landing" exact component= {Landing} />
         <Route exact path="/recipes" exact component= {Recipes} />
-        <Route exact path="/drives" exact component= {FoodDrives} />
+        <Route exact path="/drives" exact component= {Map} />
         <Route exact path="/covid19" exact component= {COVID} />
         <Route exact path="/more" exact component= {More} />
         <Route exact path="/account" exact component= {Account} />

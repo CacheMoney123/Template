@@ -1,10 +1,10 @@
 import React from 'react';
-import htmlContent from './Map.html'
+import html from './Map.html'
 
 
-function Home() {
+function Map() {
     return (
-        <div dangerouslySetInnerHTML={ {__html: htmlContent} } />
+        <div dangerouslySetInnerHTML={ {__html: html} } />
     );
 }
 
