@@ -15,14 +15,10 @@ const recipeSchema = new Schema({
         required: true,
         minlength: 10
     },
-    timeToPrepareMins: {
-        type: Number,
-        required: true
-    },
     recipeCreatorID: {
         type: String,
         required: true,
-        unique: true,
+        unique: false,
     },
     recipeIngredients: {
         type: [String],

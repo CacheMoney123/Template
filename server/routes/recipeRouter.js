@@ -2,13 +2,13 @@ const router = require('express').Router();
 let Recipe = require('../models/recipe.model')
 
 
-router.route('/:id').get((req, res) => {
+router.route('/').get((req, res) => {
     Recipe.find( { recipeCreatorID: req.body.recipeCreatorID}).then(
-        recipe => res.json(recipe), console.log("Found recipe"))
+        recipe => res.json(recipe), console.log("Found recipes"))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/:name').get((req, res) => {
+router.route('/').get((req, res) => {
     Recipe.find( {recipeName: req.body.recipeName}).then(
         recipe => res.json(recipe), console.log("Found recipe"))
         .catch(err => res.status(400).json('Error: ' + err));
@@ -30,7 +30,7 @@ router.route('/add').post((req, res) => {
     });
 
     newRecipe.save()
-        .then(() => res.json('User added!'))
+        .then(() => res.json('Recipe added!'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 

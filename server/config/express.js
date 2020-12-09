@@ -17,8 +17,7 @@ module.exports.init = () => {
         useNewUrlParser: true
     });
 
-    const connection = mongoose.connection;
-    connection.once('open', () => {
+    mongoose.connection.once('open', () => {
         console.log("MongoDB connection successful!")
     })
 
