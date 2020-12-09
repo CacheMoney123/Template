@@ -6,6 +6,7 @@ const port = process.env.PORT || 5000;
 const app = express.init()
 
 const usersRouter = require('./routes/usersRouter')
+//app.use('/users', usersRouter)
 app.use('/users', usersRouter)
 
 const recipeRouter = require('./routes/recipeRouter')

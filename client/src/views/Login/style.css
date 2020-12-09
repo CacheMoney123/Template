@@ -23,7 +23,8 @@
     float: left; 
 }
 
-.container-md {
+.containers-md {
+    width: 500px;
     margin-right:100px;
     float: left;
     border: solid #59bb30;
@@ -62,7 +63,7 @@
     position:absolute;
     bottom: 250px;
     transform: rotate(90deg);
-    right: 122px;
+    right: 126px;
     color: black;
     text-align: right;
     text-decoration: none;

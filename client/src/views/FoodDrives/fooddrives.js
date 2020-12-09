@@ -7,7 +7,6 @@ function FoodDrives() {
         <div className="whoa" >
          <NavBar />
          <div className="base">
-        
         </div>
         </div>
 

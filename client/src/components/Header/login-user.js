@@ -5,7 +5,7 @@ import {AuthContext} from '../../context/authcontext';
 
 const Login = props=>{
     const [user,setUser] = useState({username: "", password : ""});
-    const [message,setMessage] = useState(null);
+    const [message, setMessage] = useState(null);
     const authContext = useContext(AuthContext);
 
     const onChange = e =>{
@@ -30,7 +30,7 @@ const Login = props=>{
     return(
         <div>
             <form onSubmit={onSubmit}>
-                <h3>Please sign in</h3>
+                <h3>Sign In</h3>
                 <label htmlFor="username" className="sr-only">Username: </label>
                 <input type="text" 
                        name="username" 
