@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html class='use-all-space'>
+<head>
+    <meta http-equiv='X-UA-Compatible' content='IE=Edge' />
+    <meta charset='UTF-8'>
+    <title>Testing Locations</title>
+    <meta name='viewport'
+          content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no'/>
+    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.38.0/maps/maps.css'/>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.38.0/maps/maps-web.min.js"></script>
+    <style>
+        #map {
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            margin-top: 10%;
+            margin-bottom: 10%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resources map</h1>
+    <h3>The map below contains a map of Food Banks, Cornavirus Testing Centers, And social distancing friendly activities such as nature trails</h3>
+    <div id='map' class='map'></div>
+    <script>
+        var map = tt.map({
+            key: 'AyDKSW3HjxAFAHT2zz6XMKhn9rpr27K5',
+            container: 'map',
+            style: 'tomtom://vector/1/basic-main',
+            center: [29.6516, 82.4],
+            zoom: 12
+        });
+
+        var config = {
+            key: 'AyDKSW3HjxAFAHT2zz6XMKhn9rpr27K5',
+            style: 'tomtom://vector/1/relative',
+            refresh: 30000
+        };
+
+        var markerHeight = 50, markerRadius = 10, linearOffset = 25;
+        var popupOffsets = {
+        'top': [0, 0],
+        'top-left': [0,0],
+        'top-right': [0,0],
+        'bottom': [0, -markerHeight],
+        'bottom-left': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+        'bottom-right': [-linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+        'left': [markerRadius, (markerHeight - markerRadius) * -1],
+        'right': [-markerRadius, (markerHeight - markerRadius) * -1],
+        };
+
+        var vaCords = [-82.322315,29.688169];
+        var carespotCords = [-82.332458, 29.651501];
+        var cvsCords = [-82.374569,29.625398];
+        var psCords = [-82.3692975,29.635325];
+
+        var gcmCords = [-82.3271476,29.6484217];
+        var bomCords = [-82.3285356,29.6607093];
+        var hffCords = [-82.3435152,29.6471142]
+
+        var spCords = [-82.3275244, 29.6357137]
+        var baCords = [-82.3325094, 29.6193505]
+        var lwCords = [-82.3722186, 29.6550689]
+
+        var popupVAClinic = new tt.Popup({offset: popupOffsets, className: 'my-class'})
+        popupVAClinic.setLngLat(vaCords);
+        popupVAClinic.setHTML("<b>Gainesville Sixteenth Street VA Clinic Testing Site: Appointment Required</b><br/>620 Northwest 16th Street Suites I and II, Gainesville, FL 32601");
+        popupVAClinic.addTo(map);
+
+        var VaClinicLocation = new tt.Marker()
+        VaClinicLocation.setLngLat(vaCords);
+        VaClinicLocation.setPopup(popupVAClinic)
+        VaClinicLocation.addTo(map);
+
+        var popupCareSpot = new tt.Popup({offset: popupOffsets, className: 'my-class'})
+        popupCareSpot.setLngLat(carespotCords);
+        popupCareSpot.setHTML("<b>CareSpot Urgent Care - Midtown Testing Site: No Appointment Required</b><br/>720 SW 2nd Ave #160a, Gainesville, FL 32601");
+        popupCareSpot.addTo(map);
+
+        var CareSpotLocation = new tt.Marker();
+        CareSpotLocation.setLngLat(carespotCords);
+        CareSpotLocation.setPopup(popupCareSpot);
+        CareSpotLocation.addTo(map);
+
+        var popupCVS = new tt.Popup({offset: popupOffsets, className: 'my-class'})
+        popupCVS.setLngLat(cvsCords);
+        popupCVS.setHTML("<b>CVS Minute Clinic Testing Site: Appointment Required</b><br/>3404 SW Archer Rd, Gainesville, FL, United States of America");
+        popupCVS.addTo(map);
+
+        var CVSLocation = new tt.Marker();
+        CVSLocation.setLngLat(cvsCords);
+        CVSLocation.setPopup(popupCVS);
+        CVSLocation.addTo(map);
+
+        var popupPS = new tt.Popup({offset: popupOffsets, className: 'my-class'})
+        popupPS.setLngLat(psCords);
+        popupPS.setHTML("<b>UF Phillips Center Testing Center: Appointment Required</b><br/>3201 Hull Road, City of Gainesville Municipal Boundaries, FL 32611, United States of America");
+        popupPS.addTo(map);
+
+        var PSLocation = new tt.Marker();
+        PSLocation.setLngLat(psCords);
+        PSLocation.setPopup(popupPS);
+        PSLocation.addTo(map);
+
+        var popupGCM = new tt.Popup({offset: popupOffsets, className: 'my-class'})
+        popupGCM.setLngLat(gcmCords);
+        popupGCM.setHTML("<b>Gainesville Community Ministry FoodBank</b><br/>238 SW 4th Ave, Gainesville, FL 32601");
+        popupGCM.addTo(map);
+
+        var GCMLocation = new tt.Marker();
+        GCMLocation.setLngLat(gcmCords);
+        GCMLocation.setPopup(popupGCM);
+        GCMLocation.addTo(map)
+
+        var popupBOM = new tt.Popup({offset: popupOffsets, className: 'my-class'})
+        popupBOM.setLngLat(bomCords);
+        popupBOM.setHTML("<b>Bread of the Mighty Foodbank</b><br/>325 NW 10th Ave, Gainesville, FL 32601");
+        popupBOM.addTo(map);
+
+        var BOMLocation = new tt.Marker();
+        BOMLocation.setLngLat(bomCords);
+        BOMLocation.setPopup(popupBOM);
+        BOMLocation.addTo(map);
+
+        var popupHFF = new tt.Popup({offset: popupOffsets, className: 'my-class'})
+        popupHFF.setLngLat(hffCords);
+        popupHFF.setHTML("<b>Hitchcock Field & Fork Food Pantry</b><br/>564 Newell Dr, Gainesville, FL 32603");
+        popupBOM.addTo(map);
+
+        var HFFLocation = new tt.Marker();
+        HFFLocation.setLngLat(hffCords);
+        HFFLocation.setPopup(popupHFF);
+        HFFLocation.addTo(map);
+
+        var popupSP = new tt.Popup({offset: popupOffsets, className: 'my-class'})
+        popupSP.setLngLat(spCords);
+        popupSP.setHTML("<b>Sweetwater Preserve Nature Trail</b><br/>309 SE 16th Ave, Gainesville, FL 32601");
+        popupSP.addTo(map);
+
+        var SPLocation = new tt.Marker();
+        SPLocation.setLngLat(spCords);
+        SPLocation.setPopup(popupSP);
+        SPLocation.addTo(map);
+
+        var popupBA = new tt.Popup({offset: popupOffsets, className: 'my-class'})
+        popupBA.setLngLat(baCords);
+        popupBA.setHTML("<b>Bivens Arm Nature Park</b><br/>3650 S Main St, Gainesville, FL 32608");
+        popupBA.addTo(map);
+
+        var BALocation = new tt.Marker();
+        BALocation.setLngLat(baCords);
+        BALocation.setPopup(popupBA);
+        BALocation.addTo(map);
+
+        var popupLW = new tt.Popup({offset: popupOffsets, className: 'my-class'})
+        popupLW.setLngLat(lwCords);
+        popupLW.setHTML("<b>Loblolly Woods Nature Park</b><br/>3315 NW 5th Ave, Gainesville, FL 32607");
+        popupLW.addTo(map);
+
+        var LWLocation = new tt.Marker();
+        LWLocation.setLngLat(lwCords);
+        LWLocation.setPopup(popupLW);
+        LWLocation.addTo(map);
+
+        map.on('load', function() {
+          map.addTier(new tt.TrafficFlowTilesTier(config));
+          map.setCenter([-82.325535,29.648193], [])
+        });
+    </script>
+</body>
+</html>
