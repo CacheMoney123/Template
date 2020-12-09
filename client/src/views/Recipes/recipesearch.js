@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
+import API from './API'
+
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
 
 export default class RecipeSearch extends Component {
   constructor(props) {
@@ -10,28 +17,43 @@ export default class RecipeSearch extends Component {
 
     this.state = {
       ingredients: '',
-    }
+      recipieJSON: [],
+
+
+
+     }
   }
 
-  onChangeIngredients(e) {
-    this.setState({
-      ingredients: e.target.value
+  fetchData = async (e) => {
+    //e.preventDefault()
+    let str = this.state.ingredients.replace(/ /g, "%C");
+    //str = '"'+ str +'"';
+   await API.getData(str)
+    .then((response)=>{
+      this.setState({recipieJSON: response.data});
+        console.log(response)
     })
+    .catch((error) => {
+        console.log(error)
+    })
+    console.log("something is here!");
+}
+
+
+
+
+  onChangeIngredients(e) {
+
+    this.setState({ingredients: e.target.value})
+
+
   }
 
 
   onSubmit(e) {
-    e.preventDefault();
+    this.onChangeIngredients(e);
 
-    const recipe = {
-      ingredients: this.state.ingredients,
-    }
-
-    console.log(recipe);
-
-    this.setState({
-      ingredients:'',
-    })
+    this.fetchData(this.state.ingredients);
   }
 
 
@@ -47,15 +69,19 @@ export default class RecipeSearch extends Component {
             <input type="text"
                 required
                 className="form-control"
-                value={this.state.ingredients}
+                value={this.state.ingredients || ''}
                 onChange={this.onChangeIngredients}
                 />
           </div>
           <div className="form-group">
             <input type="submit" value="Search" className="btn btn-primary" />
           </div>
+          <div>
+          
+          </div>
         </form>
         </header>
+
       </div>
     )
   }
