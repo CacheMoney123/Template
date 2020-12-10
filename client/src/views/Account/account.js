@@ -1,28 +1,8 @@
-import React, {useEffect, useState, useContext} from 'react';
+import React from 'react';
 import './account.css';
 import NavBar from "../../components/Header/NavBar";
-import {AuthContext} from "../../context/authcontext";
-import postService from "../../services/postService";
-import axios from "axios";
 
-const Account = props => {
-    const authContext = useContext(AuthContext);
-    const id = authContext.user.username;
-    const [userRecipes, setRecipes] = useState([])
-
-    // useEffect(() => {
-    //     postService.getAllByUser(id).then(data => {
-    //         setRecipes(data);
-    //         console(data);
-    //     })
-    // } , [])
-
-
-
-
-
-
-
+function Account() {
     const cardInfo = [{title: "Food" , text : "food" , ingredients: ["water" , "salt" , "other" , "long name ingreedient"]},
         {title: "Rice" , text : "classic" , ingredients: ["water"]},
         {title: "wow" , text : "wow", ingredients: ["water"]},
@@ -44,9 +24,7 @@ const Account = props => {
         </div>)
     }
 
-    postService.getAllByUser(id);
     const renderCardIngredientsList = (ingredient, index) => {
-
         return (
             <li className= "list-group-item"> {ingredient}</li>
         )
