@@ -39,5 +39,5 @@ export default {
                         return { isAuthenticated : false, user : {username : ""}};
                 });
     }
-
+    
 }
