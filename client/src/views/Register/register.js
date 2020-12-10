@@ -11,11 +11,11 @@ function Login() {
         <div className="total" >
           <img src={logo} className="register-picture" alt="logo" />
          
-        <div className="container-md"><Router>
+        <div className="containers-md"><Router>
         <Route path="/login" exact component={LoginUser} />
         </Router>
         <Link className = "register-button" to='/users'>Register</Link>
-        <Link className = "landing" to='/landing'>Register later</Link>
+        <Link className = "landing" to='/landing'>Login later</Link>
         </div>
 
 

@@ -1,133 +1,71 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import './create-user.css'
+import React, {useState,useRef,useEffect} from 'react';
+import AuthService from '../../services/authservice';
+import Message from '../../components/message';
 
-export default class CreateUser extends Component {
-  constructor(props) {
-    super(props);
+const Register = props=>{
+    const [user, setUser] = useState({username: "", password : "", name : ""});
+    const [message,setMessage] = useState(null);
+    let timerID = useRef(null);
 
-    this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
-    this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangeName = this.onChangeName.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    useEffect(()=>{
+        return ()=>{
+            clearTimeout(timerID);
+        }
+    },[]);
 
-    this.state = {
-      username: '',
-      password: '',
-      name: '',
-      email: '',
-      created: '',
-    }
-  }
-
-  onChangeUsername(e) {
-    this.setState({
-      username: e.target.value
-    })
-  }
-
-  onChangePassword(e) {
-    this.setState({
-      password: e.target.value
-    })
-  }
-
-  onChangeEmail(e) {
-    this.setState({
-      email: e.target.value
-    })
-  }
-
-  onChangeName(e) {
-    this.setState({
-      name: e.target.value
-    })
-  }
-
-  onSubmit(e) {
-    e.preventDefault();
-
-    const user = {
-      username: this.state.username,
-      password: this.state.password,
-      email: this.state.email,
-      name: this.state.name,
+    const onChange = e =>{
+        setUser({...user,[e.target.name] : e.target.value});
     }
 
-    console.log(user);
+    const resetForm = ()=>{
+        setUser({username : "", password : "", name : ""});
+    }
 
-    axios.post('http://localhost:5000/login', user)
-      .then(res => console.log(res),
-      this.setState({
-        created: "Account successfully created! Try to login."
-      })
-      )
-      .catch( err => {
-        this.setState({
-          created: "An error occurred, try again!"
-        })
-      } );
+    const onSubmit = e =>{
+        e.preventDefault();
+        AuthService.register(user).then(data=>{
+            const { message } = data;
+            setMessage(message);
+            resetForm();
+            if(!message.msgError){
+                timerID = setTimeout(()=>{
+                    props.history.push('/login');
+                },2000)
+            }
+        });
+    }
 
-    this.setState({
-      username: '',
-      password: '',
-      email: '',
-      name: '',
-    })
-  }
-
-
-  render() {
-    
-    return (
-      <div className="App2">
-          <header className = "bgstuff"> 
-        <h3>Create An Account</h3>
-        <form onSubmit={this.onSubmit}>
-        <div className="form-group"> 
-            <label>Email: </label>
-            <input type="text"
-                required
-                className="form-control"
-                value={this.state.email}
-                onChange={this.onChangeEmail}
-                />
-          </div>
-          <div className="form-group"> 
-            <label>Name: </label>
-            <input  type="text"
-                required
-                className="form-control"
-                value={this.state.name}
-                onChange={this.onChangeName}
-                />
-          </div>
-          <div className="form-group"> 
-            <label>Username: </label>
-            <input  type="text"
-                required
-                className="form-control"
-                value={this.state.username}
-                onChange={this.onChangeUsername}
-                />
-          </div>
-          <div className="form-group"> 
-            <label>Password: </label>
-            <input  type="password"
-                required
-                className="form-control"
-                value={this.state.password}
-                onChange={this.onChangePassword}
-                />
-          </div>
-          <div className="form-group">
-            <input type="submit" value="Create User" className="btn btn-primary" />
-          </div>
-          <p className="notif"> {this.state.created} </p>
-        </form>
-        </header>
-      </div>
+    return(
+        <div>
+            <form onSubmit={onSubmit}>
+                <h3>Create an Account</h3>
+                <label htmlFor="username" className="sr-only">Username: </label>
+                <input type="text" 
+                       name="username" 
+                       value={user.username}
+                       onChange={onChange} 
+                       className="form-control" 
+                       placeholder="Enter Username"/>
+                <label htmlFor="password" className="sr-only">Password: </label>
+                <input type="password" 
+                       name="password"
+                       value={user.password} 
+                       onChange={onChange} 
+                       className="form-control" 
+                       placeholder="Enter Password"/>
+                <label htmlFor="name" className="sr-only">Name: </label>
+                <input type="text" 
+                       name="name"
+                       value={user.name}  
+                       onChange={onChange} 
+                       className="form-control" 
+                       placeholder="What's your name?"/>
+                <button className="btn btn-lg btn-primary btn-block" 
+                        type="submit">Register</button>
+            </form>
+            {message ? <Message message={message}/> : null}
+        </div>
     )
-  }
 }
+
+export default Register;

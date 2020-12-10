@@ -11,7 +11,7 @@ function Login() {
         <div className="total" >
           <img src={logo} className="login-picture" alt="logo" />
          
-        <div className="container-md"><Router>
+        <div className="containers-md"><Router>
         <Route path="/users" exact component={CreateUser} />
         </Router>
         <Link className = "login-button" to='/login'>Login</Link>
