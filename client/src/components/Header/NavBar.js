@@ -38,6 +38,15 @@ const NavBar = props => {
                 <button type="button" 
                         className="user-login" 
                         onClick={onClickLogoutHandler}>Logout</button>
+
+                {
+                    user != null ? 
+                    <Link to="/createrecipe">
+                        <li className="user-post">
+                            Add Recipe
+                        </li>
+                    </Link> : null
+                }  
             </>
         )
     }

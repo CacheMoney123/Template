@@ -17,28 +17,23 @@ userRouter.route('/').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-userRouter.route('/add').post((req, res) => {
-    const { username, password, name } = req.body;
-    User.findOne({username}, (err, user)=>{
+userRouter.post('/add',(req,res)=>{
+    const { username,password } = req.body;
+    User.findOne({username},(err,user)=>{
         if(err)
-            res.status(500).json({message: {msgBody: "Error occurred", msgError: true }});
+            res.status(500).json({message : {msgBody : "Error. Please try again.", msgError: true}});
         if(user)
-            res.status(400).json({message: {msgBody: "Username is already taken", msgError: true }});
-        else {
-            const newUser = new User({username, password, name });
-
-            // newUser.save().then(() => res.json('Account added!'))
-            // .catch(err => res.status(400).json('Error: ' + err));
-            newUser.save(err => {
-                if(err) {
-                    console.log(newUser.username, newUser.name);
-                    res.status(500).json({message: {msgBody: "Error 2 is occurred", msgError: true }});
-                }
+            res.status(400).json({message : {msgBody : "Username is already taken", msgError: true}});
+        else{
+            const newUser = new User({username, password});
+            newUser.save(err=>{
+                if(err)
+                    res.status(500).json({message : {msgBody : "Cannot create account.", msgError: true}});
                 else
-                    res.status(201).json({message: {msgBody: "Account created successfully", msgError: true }});
-            })
+                    res.status(201).json({message : {msgBody : "Account successfully created", msgError: false}});
+            });
         }
-    })
+    });
 });
 
 userRouter.post('/login', passport.authenticate('local', {session: false}), (req, res) => {

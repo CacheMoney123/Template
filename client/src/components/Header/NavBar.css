@@ -109,3 +109,20 @@
     color:black;
     background: #A9A9A9;
 }
+
+.user-post {
+    position:absolute;
+    top: 3px;
+    right: 260px;
+    width: 170px;
+    color: black;
+    text-align: right;
+    text-decoration: none;
+    background-color: #59bb30;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    opacity: 70%;
+}

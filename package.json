@@ -29,6 +29,7 @@
     "concurrently": "^4.1.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mocha": "^6.2.3",
@@ -42,7 +43,8 @@
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.1",
     "should": "^13.2.3",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "twitter": "^1.7.1"
   },
   "homepage": "https://github.com/UFWebApps/React_Template_Repo#readme",
   "devDependencies": {
