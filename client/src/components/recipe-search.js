@@ -55,9 +55,9 @@ export default class recipeSearch extends Component {
     
            for (var i in response.data) {
             console.log(i);
-           console.log(response.data[i].title)
+           console.log(response.data[i])
            console.log("2")
-           console.log(this.state.recipieJSON[i].title)
+           //console.log(this.state.recipieJSON[i].title)
            }
     
     
