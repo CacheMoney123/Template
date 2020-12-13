@@ -10,7 +10,7 @@ Seasoned was built to provide relief to college students during the COVID-19 pan
 
 ![hippo](https://media.giphy.com/media/kA9MowRyuxFVwAjUVY/giphy.gif)
 ![hippo](https://media.giphy.com/media/MKfOBOmgtvsEcBM4bT/giphy.gif)
-![hippo](https://media.giphy.com/media/zvjMifqOmRfNgLMi14/giphy.gif)
+![hippo](https://media.giphy.com/media/zvjMifqOmRfNgLMi14/giphy.gif)  
 
 
 # Features
