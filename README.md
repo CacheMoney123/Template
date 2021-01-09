@@ -23,7 +23,7 @@ Seasoned was built to provide relief to college students during the COVID-19 pan
 - only users can post recipes to recipe database
 
 ### How to Run
-1. First run npm install from the root. After this you will run npm run-script install-all from the root 
+1. First run ```npm install``` from the root. After this you will run ```npm run-script install-all``` from the root 
 2. In order to run both the client app and the server app in development mode, run: ```npm run-script dev```
 
 ## Issues & Notes
