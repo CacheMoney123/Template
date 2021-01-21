@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-Seasoned was built to provide relief to college students during the COVID-19 pandemic. With the Spoonacular API, Seasoned is able to send queries for recipes by ingredients users have right in their cupboard. COVID testing sites are right at their fingertips. The Twitter API sits on the landing page for live updates on all things COVID-19 anytime.  
+Seasoned was built to provide relief to college students during the COVID-19 pandemic. With the Edamam API, Seasoned is able to send queries for recipes by ingredients users have right in their cupboard. COVID testing sites are right at their fingertips. The Twitter API sits on the landing page for live updates on all things COVID-19 anytime.  
 
 
 
@@ -28,7 +28,7 @@ Seasoned was built to provide relief to college students during the COVID-19 pan
 
 ## Issues & Notes
 1. Currently, the registration component does not post to the database successfully. We believe this to be a router issue, however, the login is successful for the 1 item we have in the database. 
-2. The Spoonacular API efforts can be found in Ryan's branch, however, we did not merge this into the master as it is not entirely complete. We aim to work on this later on past the submission of this project.
+2. ~~The Spoonacular API efforts can be found in Ryan's branch, however, we did not merge this into the master as it is not entirely complete. We aim to work on this later on past the submission of this project.
 3. The TomTom API efforts were also not merged to the master. 
 4. Several pages will appear empty for these reasons stated above, such as the More, Food Drives, and COVID-19 pages. 
 5. The Twitter API was put at the bottom of our Sprint backlog, so it was unfortunately unable to be started and thus completed for the homepage.
